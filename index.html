@@ -6,155 +6,251 @@
 <title>My Portofolio - Modern Theme</title>
 <style>
 *{margin:0; padding:0; box-sizing:border-box; font-family:Arial;}
+
+/* Dark Theme (default) */
 body{
-  background: radial-gradient(circle at 20% 20%,#8c1f33,#2b0006 60%);
-  background-size:400% 400%; animation:bgMove 14s ease infinite; scroll-behavior:smooth;
+  background-color: #2b0006; /* warna dasar gelap */
+  background-image: radial-gradient(circle at 20% 20%, rgba(140,31,51,0.8), rgba(43,0,6,0.8));
+  background-size:400% 400%; 
+  animation: 
+    bgMove 14s ease infinite, 
+    bgColorPulseDark 5s ease-in-out infinite alternate;
+  scroll-behavior:smooth;
   color:white;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 body * {
   transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
+
+/* Animasi pergerakan gradient (posisi) */
 @keyframes bgMove{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
-/* Light Theme (Hijau tua dominan, cream aksen) */
-body.light-theme {
-  background: #1f4d2e; /* hijau tua solid */
-  color: #f8f0e5; /* cream */
-  animation: none;
+/* Animasi perubahan warna dasar (gelap ⇄ terang) untuk dark theme */
+@keyframes bgColorPulseDark {
+  0% { background-color: #2b0006; }   /* paling gelap */
+  100% { background-color: #8c1f33; } /* lebih terang */
 }
+
+/* Light Theme dengan palet dari gambar */
+body.light-theme {
+  background-color: #291C0E; /* warna dasar gelap (coklat) */
+  background-image: linear-gradient(45deg, 
+    rgba(225,212,194,0.7), 
+    rgba(190,181,169,0.7), 
+    rgba(167,141,120,0.7), 
+    rgba(190,181,169,0.7), 
+    rgba(225,212,194,0.7));
+  background-size: 400% 400%;
+  animation: 
+    bgMoveLight 15s ease infinite, 
+    bgColorPulseLight 5s ease-in-out infinite alternate;
+  color: #291C0E;
+}
+
+/* Animasi pergerakan gradient untuk light theme */
+@keyframes bgMoveLight {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animasi perubahan warna dasar untuk light theme (gelap ⇄ terang) */
+@keyframes bgColorPulseLight {
+  0% { background-color: #291C0E; } /* coklat gelap */
+  100% { background-color: #E1D4C2; } /* krem terang */
+}
+
+/* Sisanya (tema light) tetap sama */
 body.light-theme .header {
-  background: rgba(31, 77, 46, 0.7);
+  background: rgba(190, 181, 169, 0.7);
   backdrop-filter: blur(10px);
 }
 body.light-theme .logo svg {
-  filter: drop-shadow(0 2px 5px rgba(248, 240, 229, 0.5));
+  filter: drop-shadow(0 2px 5px rgba(41,28,14,0.5)) drop-shadow(0 0 10px #291C0E) drop-shadow(0 0 20px #291C0E);
 }
 body.light-theme .logo svg path {
-  fill: #f8f0e5;
+  fill: #291C0E;
 }
 body.light-theme .header nav a {
-  color: #f8f0e5;
+  color: #291C0E;
 }
 body.light-theme .header nav a:hover {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #6E473B;
+  color: #E1D4C2;
 }
 body.light-theme .menu-toggle {
-  color: #f8f0e5;
+  color: #291C0E;
 }
 body.light-theme .sidebar {
-  background: rgba(31, 77, 46, 0.98);
+  background: rgba(233, 212, 194, 0.98);
   backdrop-filter: blur(10px);
 }
 body.light-theme .sidebar nav ul li a {
-  color: #f8f0e5;
+  color: #291C0E;
 }
 body.light-theme .sidebar nav ul li a:hover {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #6E473B;
+  color: #E1D4C2;
 }
 body.light-theme .ui-card {
-  background: rgba(248, 240, 229, 0.2);
+  background: rgba(41, 28, 14, 0.1);
   backdrop-filter: blur(10px);
-  color: #f8f0e5;
+  color: #291C0E;
 }
 body.light-theme .status {
-  background: rgba(248, 240, 229, 0.15);
-  color: #f8f0e5;
+  background: rgba(41, 28, 14, 0.15);
+  color: #291C0E;
 }
 body.light-theme .online-dot {
-  background: #f8f0e5;
-  box-shadow: 0 0 6px #f8f0e5;
+  background: #6E473B;
+  box-shadow: 0 0 6px #6E473B;
 }
 body.light-theme .home-left h1 {
-  text-shadow: 0 0 10px #f8f0e5, 0 0 20px #f8f0e5;
+  text-shadow: 0 0 10px #6E473B, 0 0 20px #6E473B;
   animation: neonGlowLight 2s infinite alternate;
 }
 @keyframes neonGlowLight {
-  from{text-shadow:0 0 5px #f8f0e5,0 0 10px #f8f0e5;}
-  to{text-shadow:0 0 15px #f8f0e5,0 0 30px #f8f0e5;}
+  from{text-shadow:0 0 5px #6E473B,0 0 10px #6E473B;}
+  to{text-shadow:0 0 15px #6E473B,0 0 30px #6E473B;}
 }
 body.light-theme .live-buttons button {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #6E473B;
+  color: #E1D4C2;
 }
 body.light-theme .live-buttons button:hover {
-  background: #d4c9b8;
+  background: #A78D78;
 }
 body.light-theme .project-card {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #E1D4C2;
+  color: #291C0E;
 }
 body.light-theme .about-box,
 body.light-theme .skill-card,
 body.light-theme .contact-form input,
 body.light-theme .contact-form textarea {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #E1D4C2;
+  color: #291C0E;
 }
 body.light-theme .contact-form button {
-  background: #f8f0e5;
-  color: #1f4d2e;
-  border: 2px solid #1f4d2e;
+  background: #6E473B;
+  color: #E1D4C2;
+  border: 2px solid #291C0E;
 }
 body.light-theme .contact-form button:hover {
-  background: #d4c9b8;
+  background: #A78D78;
 }
 body.light-theme .social-btn {
-  border-color: #f8f0e5;
-  color: #f8f0e5;
+  border-color: #6E473B;
+  color: #6E473B;
 }
 body.light-theme .social-btn:hover {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #6E473B;
+  color: #E1D4C2;
 }
 body.light-theme .skill-bar {
-  background: #d4c9b8;
+  background: #BEB5A9;
 }
 body.light-theme .skill-fill {
-  background: #f8f0e5;
+  background: #6E473B;
 }
 body.light-theme .skill-percent {
-  color: #f8f0e5;
+  color: #291C0E;
 }
 body.light-theme .welcome-circle {
-  background: radial-gradient(circle, #f8f0e5, #b8a99a);
-  box-shadow: 0 0 40px rgba(248,240,229,0.5);
-  color: #1f4d2e;
+  background: radial-gradient(circle, #E1D4C2, #BEB5A9);
+  box-shadow: 0 0 40px rgba(110,71,59,0.5);
+  color: #291C0E;
 }
 body.light-theme .ring-ball {
-  background: radial-gradient(circle at 30% 30%, #f8f0e5, #d4c9b8);
-  box-shadow: 0 0 8px #f8f0e5, 0 0 15px #f8f0e5;
+  background: radial-gradient(circle at 30% 30%, #6E473B, #291C0E);
+  box-shadow: 0 0 8px #6E473B, 0 0 15px #6E473B;
 }
 body.light-theme .landing {
-  background: linear-gradient(to bottom, #1f4d2e, #3a6b4a);
-  color: #f8f0e5;
+  background: linear-gradient(to bottom, #E1D4C2, #BEB5A9);
+  color: #291C0E;
 }
 body.light-theme .progress-fill {
-  background: #f8f0e5;
+  background: #6E473B;
 }
 body.light-theme .enter-btn {
-  border-color: #f8f0e5;
-  color: #f8f0e5;
+  border-color: #6E473B;
+  color: #6E473B;
 }
 body.light-theme .enter-btn:hover {
-  background: #f8f0e5;
-  color: #1f4d2e;
+  background: #6E473B;
+  color: #E1D4C2;
 }
 body.light-theme .theme-toggle {
-  color: #f8f0e5;
-  border-color: #f8f0e5;
+  color: #291C0E;
+  border-color: #291C0E;
 }
 body.light-theme .theme-toggle:hover {
-  background: rgba(248,240,229,0.2);
+  background: rgba(41,28,14,0.2);
 }
 body.light-theme .skill-card {
-  border-top-color: #f8f0e5;
+  border-top-color: #6E473B;
+}
+
+/* Animasi tambahan untuk semua tema */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Terapkan animasi floating pada kartu */
+.project-card, .skill-card, .about-box, .ui-card {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Variasi delay agar tidak serempak */
+.skill-card:nth-child(2) { animation-delay: 0.5s; }
+.project-card:nth-child(2) { animation-delay: 1s; }
+.about-box { animation-delay: 0.2s; }
+.ui-card { animation-delay: 0.7s; }
+
+/* Animasi pulse pada tombol dan elemen interaktif */
+.live-buttons button, .enter-btn, .social-btn, .theme-toggle, .contact-form button {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Status dot berdenyut */
+.online-dot {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Logo berotasi saat hover */
+.logo:hover svg {
+  animation: rotateSlow 2s linear infinite;
+}
+
+/* Efek tambahan pada ring ball */
+.ring-ball {
+  animation: ringOrbit 5s linear infinite;
+}
+.ring-ball:hover {
+  animation: ringOrbit 5s linear infinite, pulseRing 1s ease infinite;
+}
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* LOADING */
@@ -163,9 +259,19 @@ body.light-theme .skill-card {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   background:linear-gradient(to bottom,#5a0f1b,#a63d4a); color:white; z-index:999; transition:opacity .8s;
 }
-.loading-number{ font-size:28px; margin-bottom:15px; }
+.loading-number{ 
+  font-size:28px; margin-bottom:15px; 
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
 .progress-bar{ width:220px; height:8px; background:rgba(255,255,255,0.3); border-radius:20px; overflow:hidden;}
-.progress-fill{height:100%; width:0%; background:white;}
+.progress-fill{
+  height:100%; width:0%; background:white;
+  transition: width 0.2s ease;
+}
 .enter-btn{
   margin-top:30px; display:none; padding:12px 30px; font-size:18px;
   border:2px solid white; background:transparent; color:white;
@@ -178,7 +284,7 @@ body.light-theme .skill-card {
   position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center;
   padding:15px 40px; background:rgba(0,0,0,0.4); backdrop-filter:blur(10px); z-index:100;
 }
-/* Modern Logo - Bulu (Feather) */
+/* Logo Bulan Sabit dengan Efek Neon */
 .logo {
   width: 45px;
   height: 45px;
@@ -189,16 +295,16 @@ body.light-theme .skill-card {
   transition: transform 0.3s;
 }
 .logo:hover {
-  transform: scale(1.1) rotate(10deg);
+  transform: scale(1.1);
 }
 .logo svg {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(0 0 5px #ff4d6d) drop-shadow(0 0 15px #ff001a) drop-shadow(0 0 25px #ff4d6d);
+  transition: filter 0.3s;
 }
-.logo svg path {
-  fill: white;
-  transition: fill 0.5s ease;
+.logo:hover svg {
+  filter: drop-shadow(0 0 8px #ff4d6d) drop-shadow(0 0 20px #ff001a) drop-shadow(0 0 35px #ff4d6d);
 }
 /* Tombol menu sidebar */
 .menu-toggle {
@@ -390,11 +496,9 @@ section.active{ display:flex; animation:fade .6s; }
 <div class="header">
   <button class="menu-toggle" id="menuToggle">☰</button>
   <div class="logo">
-    <!-- SVG Bulu (Feather) -->
+    <!-- Logo Bulan Sabit -->
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C12 2 8 6 8 10C8 13 10 15 12 15C14 15 16 13 16 10C16 6 12 2 12 2Z" fill="white"/>
-      <path d="M12 15V22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      <path d="M9 18L15 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.7 0 1.4-.1 2.1-.2-2.4-1.5-4-4.1-4-7.2s1.6-5.7 4-7.2c-.7-.2-1.4-.3-2.1-.4z" fill="currentColor"/>
     </svg>
   </div>
   <nav>
@@ -426,7 +530,7 @@ section.active{ display:flex; animation:fade .6s; }
     <div class="home-left">
       <div class="status-box"><div class="status"><span class="online-dot"></span> SYSTEM ONLINE</div></div>
       <h1>WELCOME</h1>
-      <p>Building modern, reliable, and fast digital experiences with clean UI and solid engineering.</p>
+      <p>Selanat Datang Di Website Portofolio Saya.</p>
       <div class="live-buttons"><button onclick="showPage('profile')">Profile</button></div>
     </div>
     <div class="ui-card">
@@ -510,42 +614,48 @@ section.active{ display:flex; animation:fade .6s; }
 
 <script>
 // LOADING
-let num=0;
-let loadingNum=document.getElementById("loadingNum");
-let progressFill=document.getElementById("progressFill");
-let enterBtn=document.getElementById("enterBtn");
-let loading=setInterval(()=>{
+let num = 0;
+const loadingNum = document.getElementById("loadingNum");
+const progressFill = document.getElementById("progressFill");
+const enterBtn = document.getElementById("enterBtn");
+const loadingInterval = setInterval(() => {
   num++;
-  loadingNum.innerText=num+"%";
-  progressFill.style.width=num+"%";
-  if(num>=100){clearInterval(loading); enterBtn.style.display="block"; loadingNum.innerText="Ready";}
-},25);
+  loadingNum.innerText = num + "%";
+  progressFill.style.width = num + "%";
+  if (num >= 100) {
+    clearInterval(loadingInterval);
+    enterBtn.style.display = "block";
+    loadingNum.innerText = "Ready";
+  }
+}, 25);
 
-function enterSite(){
-  let landing=document.getElementById("landing");
-  landing.style.opacity="0";
-  setTimeout(()=>{landing.style.display="none"},800);
+function enterSite() {
+  const landing = document.getElementById("landing");
+  landing.style.opacity = "0";
+  setTimeout(() => {
+    landing.style.display = "none";
+  }, 800);
 }
 
 // NAVIGATION
-function showPage(page){
-  let sections=document.querySelectorAll("section");
-  sections.forEach(sec=>{sec.classList.remove("active");});
+function showPage(page) {
+  let sections = document.querySelectorAll("section");
+  sections.forEach(sec => { sec.classList.remove("active"); });
   document.getElementById(page).classList.add("active");
-  if(page==="skills"){animateSkills();}
+  if (page === "skills") { animateSkills(); }
 }
 
 // SKILLS ANIMATION
-function animateSkills(){
-  let skills=document.querySelectorAll(".skill-fill");
-  skills.forEach(skill=>{
-    let target=parseInt(skill.getAttribute("data-target"));
-    let width=0;
-    let interval=setInterval(()=>{
+function animateSkills() {
+  let skills = document.querySelectorAll(".skill-fill");
+  skills.forEach(skill => {
+    let target = parseInt(skill.getAttribute("data-target"));
+    let width = 0;
+    let interval = setInterval(() => {
       width++;
-      skill.style.width=width+"%";
-      if(width>=target){clearInterval(interval);}
-    },20);
+      skill.style.width = width + "%";
+      if (width >= target) { clearInterval(interval); }
+    }, 20);
   });
 }
 
